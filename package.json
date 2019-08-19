@@ -1,14 +1,17 @@
 {
-    "name": "tree-middleware-restfree",
-    "version": "1.0.0",
-    "description": "an example repository for restfree",
-    "main": "tree-middleware-restfree.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "dependencies": {
-      "firebase": "^6.3.3"
-    },
-    "author": "Luis Fernando Ramirez Santos",
-    "license": "MIT"
-  }
+  "name": "skrillfer-middleware-restfree",
+  "version": "1.0.4",
+  "description": "an example repository for restfree",
+  "main": "skrillfer-middleware-restfree.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "firebase": "^6.3.3",
+    "rxfire": "^3.6.11",
+    "rxjs": "^6.5.2",
+    "rxjs-compat": "^6.5.2"
+  },
+  "author": "Luis Fernando Ramirez Santos",
+  "license": "MIT"
+}
