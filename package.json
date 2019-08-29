@@ -2,16 +2,34 @@
   "name": "skrillfer-middleware-restfree",
   "version": "1.0.4",
   "description": "an example repository for restfree",
-  "main": "skrillfer-middleware-restfree.js",
+  "main": "server.js",
   "scripts": {
+    "dev": "nodemon -w server/server.js server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "firebase": "^6.3.3",
     "rxfire": "^3.6.11",
     "rxjs": "^6.5.2",
-    "rxjs-compat": "^6.5.2"
+    "rxjs-compat": "^6.5.2",
+    "typescript": "^3.5.3"
   },
   "author": "Luis Fernando Ramirez Santos",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^1.19.1"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skrillfer/Tree-RestFree.git"
+  },
+  "bugs": {
+    "url": "https://github.com/skrillfer/Tree-RestFree/issues"
+  },
+  
+  "homepage": "https://github.com/skrillfer/Tree-RestFree#readme"
 }

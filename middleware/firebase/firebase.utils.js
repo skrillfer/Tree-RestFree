@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firebase-firestore';
+import '/firebase/auth';
+import '/firebase/firebase-firestore';
 import {getCollectionById,getUidsCollectionById} from './queries';
 
 import * as Consults from './consult'
