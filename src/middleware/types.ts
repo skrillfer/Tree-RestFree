@@ -21,3 +21,16 @@ export interface Type{
     name:string;
     price: number;
 }
+
+export interface Table{
+    id?:string;
+    name:string;
+    description:string;
+    picture:string;
+}
+export interface Order{
+    id:string;
+    date:string;
+    status:number;
+    table:Table;
+}

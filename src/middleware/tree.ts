@@ -2,7 +2,7 @@ import { firestore } from "./firebase";
 import {Subject } from 'rxjs';
 
 import {newRestaurant} from './create';
-import {Categorie, Item, Type} from './types';
+import {Categorie, Item, Type, Order} from './types';
 
 import * as Consults from './consult';
 import * as Insert from './create';
@@ -32,6 +32,14 @@ export const addType=(type:Type,idCat:string,idItem:string)=>{
     Insert.newType(ref,type);
 }
 
+export const addOrder=(order:Order)=>{
+    Insert.newOrder(branchReference,order);
+}
+
+export const addItemInOrder=(item:Item,idOrder:string)=>{
+    var ref=Consults.getCollection(branchReference,"orders");
+    Insert.newItem(Consults.getDocInCollection(ref,idOrder),item);
+}
 
 //Consult
 export const switchToBranch=()=>{
@@ -80,3 +88,28 @@ export const getTypesInItems=(idCat:string,idItem:string)=>{
     return items$;
 }
 
+export const getAllOrders=()=>{
+    var orders$ = new Subject<Order[]>();
+    const querieOrders= Consults.getCollection(branchReference,"orders");
+    querieOrders.onSnapshot((querySnapshot:any) => {
+        var data = querySnapshot.docs.map( (d:any) => {
+            return {...d.data(),id:d.id};
+        });
+        orders$.next(data);
+    });
+    return orders$;
+}
+
+export const getItemsInOrder=(idOrder:string)=>{
+    var items$ = new Subject<Item[]>();
+    var ref=Consults.getCollection(branchReference,"orders");
+
+    const querieItems= Consults.getCollection(Consults.getDocInCollection(ref,idOrder),"items");
+    querieItems.onSnapshot((querySnapshot:any) => {
+        var data = querySnapshot.docs.map( (d:any) => {
+            return {...d.data(),id:d.id};
+        });
+        items$.next(data);
+    });
+    return items$;
+}

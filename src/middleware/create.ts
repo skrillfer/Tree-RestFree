@@ -1,5 +1,6 @@
 import {firestore as db} from './firebase';
-import { dataRestaurant,Categorie,Item, Type } from "./types";
+import { dataRestaurant,Categorie,Item, Type, Order } from "./types";
+
 export const newRestaurant=async ()=>{
     var newRef=db.collection('restaurants').doc();
     var snapShot= await newRef.get();
@@ -16,6 +17,7 @@ export const newRestaurant=async ()=>{
     await newDataBranch(refBranch,info);
     alert('added');
 }
+
 export const newBranch=async (dbRef:any)=>{
     var newRef = dbRef.collection('branches').doc(); 
     var snapShot= await newRef.get();
@@ -73,6 +75,22 @@ export const newType = async (dbRef:any,type:Type)=>{
     if(!snapShot.exists){
         try {
            const {id,...other} = type; 
+           await newRef.set({...other});
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+/*  Orders */
+export const newOrder = async (dbRef:any,order:Order)=>{
+    var newRef = dbRef.collection('orders').doc(); 
+    var snapShot= await newRef.get();
+    if(!snapShot.exists){
+        try {
+            const {id,...other}=order;
+
+            
            await newRef.set({...other});
         } catch (error) {
             console.log(error);

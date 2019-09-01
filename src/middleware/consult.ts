@@ -1,13 +1,7 @@
 
-export const getAllOrders=(db:any)=>{
-    return db.collection('restaurants')
-    .doc('opimWyCY5tNKY7ZdQqsN')
-    .collection('orders');
-}
 
-export const getItemsInOrder=(ref:any,idDoc:any)=>{
-    return ref.doc(idDoc).collection('items');
-}
+
+
 
 export const getTypesInItemFromOrder=(ref:any,idDoc:any)=>{
     return ref.doc(idDoc).collection('types');

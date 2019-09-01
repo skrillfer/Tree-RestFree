@@ -2,8 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import { switchToBranch, getAllCategories, addItem,getItemsCategories, getTypesInItems, addType } from "./middleware/tree";
-import { Categorie, Item, Type } from './middleware/types';
+import { switchToBranch, getAllCategories, addItem,getItemsCategories, getTypesInItems, addType, getAllOrders, addOrder, getItemsInOrder, addItemInOrder } from "./middleware/tree";
+import { Categorie, Item, Type, Order, Table } from './middleware/types';
 
 
 const App: React.FC = () => {
@@ -26,6 +26,34 @@ const App: React.FC = () => {
       });
     }
   );
+
+  getAllOrders().subscribe(orders=>{
+    orders.map(
+      order=>{
+        getItemsInOrder(order.id).subscribe(items=>{
+          console.log('items in order-----');
+          console.log(items);
+          console.log('items in order-----');
+
+        });
+      })
+  });
+
+  
+  //--Add Order
+  /*
+  let table:Table = {name:"MesaX1",description:"cerca de la entrada",picture:"https://"};
+  let ord:Order = {id:'',date:"",status:1,table:table};
+  addOrder(ord);
+  */
+
+  //--Add Item in Order
+  /*  
+  let item:Item = {id:"",name:"Alitas",picture:"https://"};
+  addItemInOrder(item,"HPw0rUHemCAAgT6DWZRO");
+  */
+
+
 
   //--Add Categorie
   /*
