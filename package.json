@@ -1,35 +1,36 @@
 {
-  "name": "skrillfer-middleware-restfree",
-  "version": "1.0.4",
-  "description": "an example repository for restfree",
-  "main": "server.js",
-  "scripts": {
-    "dev": "nodemon -w server/server.js server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "name": "tree",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "firebase": "^6.3.3",
-    "rxfire": "^3.6.11",
-    "rxjs": "^6.5.2",
-    "rxjs-compat": "^6.5.2",
-    "typescript": "^3.5.3"
+    "@types/jest": "24.0.18",
+    "@types/node": "12.7.3",
+    "@types/react": "16.9.2",
+    "@types/react-dom": "16.9.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-scripts": "3.1.1",
+    "typescript": "3.6.2"
   },
-  "author": "Luis Fernando Ramirez Santos",
-  "license": "MIT",
-  "devDependencies": {
-    "express": "^4.17.1",
-    "nodemon": "^1.19.1"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "directories": {
-    "test": "test"
+  "eslintConfig": {
+    "extends": "react-app"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/skrillfer/Tree-RestFree.git"
-  },
-  "bugs": {
-    "url": "https://github.com/skrillfer/Tree-RestFree/issues"
-  },
-  
-  "homepage": "https://github.com/skrillfer/Tree-RestFree#readme"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
