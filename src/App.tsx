@@ -2,7 +2,49 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import { switchToBranch, getAllCategories, addItem,getItemsCategories, getTypesInItems, addType } from "./middleware/tree";
+import { Categorie, Item, Type } from './middleware/types';
+
+
 const App: React.FC = () => {
+  //1
+  switchToBranch();
+  getAllCategories().subscribe(
+    categories=>{
+      categories.map(cat=>{
+        getItemsCategories(cat.id).subscribe(
+          items=>{
+            items.map(item=>{
+              getTypesInItems(cat.id,item.id).subscribe(
+                types=>{
+                  console.log(types);
+                }
+              )
+            })
+          }
+        );
+      });
+    }
+  );
+
+  //--Add Categorie
+  /*
+  let cat:Categorie = {id:"",name:"Bebidas",description:"son refrescantes"};
+  addCategorie(cat);
+  */
+
+  //--Add Item in Categorie
+  /*
+  let item:Item = {id:"",name:"Alitas",picture:"https://"};
+  addItem(item,"MmTy92b7AboTN0jXFcd4");
+  */
+
+  //--Add Type in Item from Categorie
+  /*
+      let type:Type = {id:"",name:"grande",price:34};
+      addType(type,"MmTy92b7AboTN0jXFcd4","WNJ33sZD6qleaGb83J7b");
+
+  */
   return (
     <div className="App">
       <header className="App-header">
