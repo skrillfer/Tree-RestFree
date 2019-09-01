@@ -41,6 +41,15 @@ export const addItemInOrder=(item:Item,idOrder:string)=>{
     Insert.newItem(Consults.getDocInCollection(ref,idOrder),item);
 }
 
+export const addTypeItemInOrder=(type:Type,idOrd:string,idItem:string)=>{
+    var ref=Consults.getCollection(branchReference,"orders");
+    ref = Consults.getDocInCollection(ref,idOrd);
+    ref = Consults.getCollection(ref,"items");
+    ref = Consults.getDocInCollection(ref,idItem);
+    Insert.newType(ref,type);
+}
+
+
 //Consult
 export const switchToBranch=()=>{
    branchReference= firestore.collection("restaurants").doc("gZg5c8ykpUHnfAypj7JR").collection("branches").doc("xvJCkRhuNtSp4FzO01Td");
@@ -113,3 +122,22 @@ export const getItemsInOrder=(idOrder:string)=>{
     });
     return items$;
 }
+
+export const getTypesInItemsOrder=(idOrder:string,idItem:string)=>{
+    var items$ = new Subject<Type[]>();
+    var ref=Consults.getCollection(branchReference,"orders");
+    ref = Consults.getDocInCollection(ref,idOrder);
+    ref = Consults.getCollection(ref,"items");
+    const querieItems= Consults.getCollection(Consults.getDocInCollection(ref,idItem),"types");
+    querieItems.onSnapshot((querySnapshot:any) => {
+        var data = querySnapshot.docs.map( (d:any) => {
+            return {...d.data(),id:d.id};
+        });
+        items$.next(data);
+    });
+    return items$;
+}
+
+//Usar una funcion branch, 
+//ya sea para unirse 
+//a la referencia de un waiter o de todo el restaurante [branchReference]

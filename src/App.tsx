@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import { switchToBranch, getAllCategories, addItem,getItemsCategories, getTypesInItems, addType, getAllOrders, addOrder, getItemsInOrder, addItemInOrder } from "./middleware/tree";
+import { switchToBranch, getAllCategories, addItem,getItemsCategories, getTypesInItems, addType, getAllOrders, addOrder, getItemsInOrder, addItemInOrder, addTypeItemInOrder,getTypesInItemsOrder } from "./middleware/tree";
 import { Categorie, Item, Type, Order, Table } from './middleware/types';
 
 
@@ -31,13 +31,24 @@ const App: React.FC = () => {
     orders.map(
       order=>{
         getItemsInOrder(order.id).subscribe(items=>{
-          console.log('items in order-----');
-          console.log(items);
-          console.log('items in order-----');
-
+          items.map(
+            item=>{
+              getTypesInItemsOrder(order.id,item.id).subscribe(
+                types=>{
+                  console.log(types);
+                }
+              )
+            }
+          );
         });
       })
   });
+
+
+  //--Add Type Item in Order
+    
+  let type:Type = {id:"",name:"grande",price:34};
+  addTypeItemInOrder(type,"HPw0rUHemCAAgT6DWZRO","6Et0W4QwQjWNT1NwY4t0");
 
   
   //--Add Order
