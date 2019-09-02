@@ -1,7 +1,6 @@
 import { firestore } from "./firebase";
 import {Subject } from 'rxjs';
 
-import {newRestaurant} from './base_queries/create';
 import {Categorie, Item, Type, Order} from './typesdb/types';
 
 import * as Consults from './base_queries/consult';
@@ -10,6 +9,10 @@ import * as Edit from './base_queries/update';
 
 let branchReference:any = null;
 let branchReferenceWaiter:any = null;
+
+export const sessionWaiter=(idWaiter:string)=>{
+    branchReferenceWaiter = branchReference.collection("waiters").doc(idWaiter);
+}
 
 //Insert
 export const addRestaurant=()=>{
@@ -143,6 +146,10 @@ export const getTypesInItemsOrder=(idOrder:string,idItem:string)=>{
     });
     return items$;
 }
+
+
+//Delete
+
 
 //Usar una funcion branch, 
 //ya sea para unirse 

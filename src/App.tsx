@@ -8,7 +8,8 @@ import { updateStatusOrder, switchToBranch } from './middleware/tree';
 
 const App: React.FC = () => {
   switchToBranch();
-
+  updateStatusOrder("HPw0rUHemCAAgT6DWZRO",StatusOrder.PENDING
+  );
 
   return (
     <div className="App">
