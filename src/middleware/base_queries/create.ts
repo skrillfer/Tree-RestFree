@@ -1,5 +1,5 @@
-import {firestore as db} from './firebase';
-import { dataRestaurant,Categorie,Item, Type, Order } from "./types";
+import {firestore as db} from '../firebase';
+import { dataRestaurant,Categorie,Item, Type, Order } from "../typesdb/types";
 
 export const newRestaurant=async ()=>{
     var newRef=db.collection('restaurants').doc();

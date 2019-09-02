@@ -1,14 +1,15 @@
 import { firestore } from "./firebase";
 import {Subject } from 'rxjs';
 
-import {newRestaurant} from './create';
-import {Categorie, Item, Type, Order} from './types';
+import {newRestaurant} from './base_queries/create';
+import {Categorie, Item, Type, Order} from './typesdb/types';
 
-import * as Consults from './consult';
-import * as Insert from './create';
+import * as Consults from './base_queries/consult';
+import * as Insert from './base_queries/create';
+import * as Edit from './base_queries/update';
 
 let branchReference:any = null;
-
+let branchReferenceWaiter:any = null;
 
 //Insert
 export const addRestaurant=()=>{
@@ -49,6 +50,11 @@ export const addTypeItemInOrder=(type:Type,idOrd:string,idItem:string)=>{
     Insert.newType(ref,type);
 }
 
+//Update
+export const updateStatusOrder=(idOrder:string,payload:number)=>{
+    var ref=Consults.getCollection(branchReference,"orders");
+    Edit.updatePropertyInDocument(ref,idOrder,{status:payload});
+}
 
 //Consult
 export const switchToBranch=()=>{

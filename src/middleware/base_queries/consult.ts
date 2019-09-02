@@ -1,8 +1,4 @@
 
-
-
-
-
 export const getTypesInItemFromOrder=(ref:any,idDoc:any)=>{
     return ref.doc(idDoc).collection('types');
 }

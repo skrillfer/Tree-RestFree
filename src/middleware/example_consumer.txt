@@ -1,0 +1,82 @@
+//1
+switchToBranch();
+getAllCategories().subscribe(
+  categories=>{
+    categories.map(cat=>{
+      getItemsCategories(cat.id).subscribe(
+        items=>{
+          items.map(item=>{
+            getTypesInItems(cat.id,item.id).subscribe(
+              types=>{
+                console.log(types);
+              }
+            )
+          })
+        }
+      );
+    });
+  }
+);
+
+getAllOrders().subscribe(orders=>{
+  orders.map(
+    order=>{
+      getItemsInOrder(order.id).subscribe(items=>{
+        items.map(
+          item=>{
+            getTypesInItemsOrder(order.id,item.id).subscribe(
+              types=>{
+                console.log(types);
+              }
+            )
+          }
+        );
+      });
+    })
+});
+
+
+//--Add Type Item in Order
+/*  
+let type:Type = {id:"",name:"grande",price:34};
+addTypeItemInOrder(type,"HPw0rUHemCAAgT6DWZRO","6Et0W4QwQjWNT1NwY4t0");
+*/
+
+//--Add Order
+/*
+let table:Table = {name:"MesaX1",description:"cerca de la entrada",picture:"https://"};
+let ord:Order = {id:'',date:"",status:1,table:table};
+addOrder(ord);
+*/
+
+//--Add Item in Order
+/*  
+let item:Item = {id:"",name:"Alitas",picture:"https://"};
+addItemInOrder(item,"HPw0rUHemCAAgT6DWZRO");
+*/
+
+
+
+//--Add Categorie
+/*
+let cat:Categorie = {id:"",name:"Bebidas",description:"son refrescantes"};
+addCategorie(cat);
+*/
+
+//--Add Item in Categorie
+/*
+let item:Item = {id:"",name:"Alitas",picture:"https://"};
+addItem(item,"MmTy92b7AboTN0jXFcd4");
+*/
+
+//--Add Type in Item from Categorie
+/*
+    let type:Type = {id:"",name:"grande",price:34};
+    addType(type,"MmTy92b7AboTN0jXFcd4","WNJ33sZD6qleaGb83J7b");
+
+*/
+
+//--Modify Status Order
+/*
+updateStatusOrder("HPw0rUHemCAAgT6DWZRO",StatusOrder.FINISHED);
+*/
